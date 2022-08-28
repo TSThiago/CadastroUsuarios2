@@ -1,5 +1,3 @@
-// 1. Crie uma função que solicite dois valores ao usuário, um nome e uma senha e
-// guarde cada um no seu respectivo array.
 // 2. Crie uma função que solicite ao seu usuário o que ele deseja fazer: cadastrar, fazer
 // login, excluir um cadastro ou encerrar o programa. Essa função deve retornar a
 // opção escolhida pelo usuário.
@@ -15,22 +13,49 @@
 // que no login caso seja bem sucedido retorna uma mensagem “Login feito com
 // sucesso!” e em caso negativo “Nome ou senha incorretos!”
 
-function SolicitarNome(){
+function SolicitarNome() {
     var nome = prompt("Insira o seu nome")
     return nome
 }
 
-function SolicitarSenha(){
+function SolicitarSenha() {
     var senha = prompt("Insira uma senha")
     return senha
+}
+
+function SelecionarOpcao() {
+    continuar = true
+    while (continuar == true) {  
+        opcao = prompt("O que deseja fazer? \n1 - Cadastro \n2 - Login \n3 - Excluir Cadastro \n4 - Encerrar Programa")
+        while (opcao < 1 || opcao > 4) {
+            opcao = prompt("Selecione uma opção válida: \n1 - Cadastro \n2 - Login \n3 - Excluir Cadastro \n4 - Encerrar Programa")
+        }
+        if (opcao == 1) {
+            alert("Opção de cadastro selecionado:")
+            nomeArray[index] = SolicitarNome()
+            senhaArray[index] = SolicitarSenha()
+            index++
+        }
+        if (opcao == 2){
+            alert("Opção de login selecionado:")
+        } 
+        if (opcao == 3){
+            alert("Opção de excluir cadastro selecionado:")
+        } 
+        if(opcao == 4){
+            alert("Programa encerrado.")
+            continuar = false
+            
+        }
+    }
 }
 
 nomeArray = []
 senhaArray = []
 index = parseInt(0)
 
-nomeArray[index] = SolicitarNome()
-senhaArray[index] = SolicitarSenha()
+SelecionarOpcao()
 
 console.log(nomeArray)
 console.log(senhaArray)
+
