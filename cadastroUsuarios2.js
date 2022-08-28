@@ -14,3 +14,23 @@
 // que o usuário pode escolher quando encerrar o programa conforme as opções e
 // que no login caso seja bem sucedido retorna uma mensagem “Login feito com
 // sucesso!” e em caso negativo “Nome ou senha incorretos!”
+
+function SolicitarNome(){
+    var nome = prompt("Insira o seu nome")
+    return nome
+}
+
+function SolicitarSenha(){
+    var senha = prompt("Insira uma senha")
+    return senha
+}
+
+nomeArray = []
+senhaArray = []
+index = parseInt(0)
+
+nomeArray[index] = SolicitarNome()
+senhaArray[index] = SolicitarSenha()
+
+console.log(nomeArray)
+console.log(senhaArray)
