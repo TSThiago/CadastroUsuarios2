@@ -1,6 +1,3 @@
-// 2. Crie uma função que solicite ao seu usuário o que ele deseja fazer: cadastrar, fazer
-// login, excluir um cadastro ou encerrar o programa. Essa função deve retornar a
-// opção escolhida pelo usuário.
 // 3. Crie uma função de login e recebe dois valores como parâmetro, um nome e uma
 // senha, depois procure o nome recebido no array de nomes e em caso positivo
 // compare a senha no array de senhas. Se as duas comparações forem válidas
@@ -23,9 +20,21 @@ function SolicitarSenha() {
     return senha
 }
 
+function FazerLogin(nome, senha) {
+    erro = true
+    for (index = 0; index < nomeArray.length; index++) {
+        if (nome == nomeArray[index] && senha == senhaArray[index]) {
+            alert("Login feito com sucesso!")
+            erro = false
+        }
+    }
+    if(erro == true){
+        alert("Nome ou senha incorretos.")
+    }
+}
 function SelecionarOpcao() {
     continuar = true
-    while (continuar == true) {  
+    while (continuar == true) {
         opcao = prompt("O que deseja fazer? \n1 - Cadastro \n2 - Login \n3 - Excluir Cadastro \n4 - Encerrar Programa")
         while (opcao < 1 || opcao > 4) {
             opcao = prompt("Selecione uma opção válida: \n1 - Cadastro \n2 - Login \n3 - Excluir Cadastro \n4 - Encerrar Programa")
@@ -36,16 +45,17 @@ function SelecionarOpcao() {
             senhaArray[index] = SolicitarSenha()
             index++
         }
-        if (opcao == 2){
+        if (opcao == 2) {
             alert("Opção de login selecionado:")
-        } 
-        if (opcao == 3){
+            FazerLogin(SolicitarNome(), SolicitarSenha())
+        }
+        if (opcao == 3) {
             alert("Opção de excluir cadastro selecionado:")
-        } 
-        if(opcao == 4){
+        }
+        if (opcao == 4) {
             alert("Programa encerrado.")
             continuar = false
-            
+
         }
     }
 }
