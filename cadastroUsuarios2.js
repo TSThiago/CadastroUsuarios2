@@ -1,15 +1,3 @@
-// 3. Crie uma função de login e recebe dois valores como parâmetro, um nome e uma
-// senha, depois procure o nome recebido no array de nomes e em caso positivo
-// compare a senha no array de senhas. Se as duas comparações forem válidas
-// retorne true se uma delas não for válida retorne false.
-// 4. Crie uma função de exclusão de cadastro que recebe um nome como parâmetro,
-// então procure pelo nome no array de nomes e exclua ele e a senha correspondente
-// do outro varray, por fim organize o array para eliminar os espaços vazios.
-// 5. Utilizando as funções criadas faça o fluxo de funcionamento do código, considere
-// que o usuário pode escolher quando encerrar o programa conforme as opções e
-// que no login caso seja bem sucedido retorna uma mensagem “Login feito com
-// sucesso!” e em caso negativo “Nome ou senha incorretos!”
-
 function SolicitarNome() {
     var nome = prompt("Insira o seu nome")
     return nome
@@ -18,6 +6,13 @@ function SolicitarNome() {
 function SolicitarSenha() {
     var senha = prompt("Insira uma senha")
     return senha
+}
+function FazerCadastro(nome,senha){
+    index = nomeArray.length
+    nomeArray[index] = nome
+    senhaArray[index] = senha
+    console.log(nomeArray)
+    console.log(senhaArray)
 }
 
 function FazerLogin(nome, senha) {
@@ -28,10 +23,51 @@ function FazerLogin(nome, senha) {
             erro = false
         }
     }
-    if(erro == true){
+    if (erro == true) {
         alert("Nome ou senha incorretos.")
     }
 }
+
+function ExcluirCadastro(nome) {
+    excluir = false
+    for (index = 0; index < nomeArray.length; index++) {
+        if (nome == nomeArray[index]) {
+            alert("Cadastro excluído!")
+            nomeArray[index] = 0
+            senhaArray[index] = 0
+            excluir = true
+        }
+    }
+    if (excluir == true) {
+        for (index = 0; index < nomeArray.length - 1; index++) {
+            for (var seguinte = index + 1; seguinte < nomeArray.length; seguinte++) {
+                if (nomeArray[index] == 0) {
+                    nomeArray[index] = nomeArray[seguinte]
+                    senhaArray[index] = senhaArray[seguinte]
+                    nomeArray[seguinte] = 0
+                    senhaArray[seguinte] = 0
+                }
+            }
+        }
+        for (index = 0; index < nomeArray.length; index++) {
+            if (nomeArray[index] != 0) {
+                nomeAux[index] = nomeArray[index]
+                senhaAux[index] = senhaArray[index]
+            }
+        }
+    
+    }else if(excluir == false){
+        alert("ERRO! Usuário com esse nome não encontrado.")
+    }
+
+    nomeArray = nomeAux
+    senhaArray = senhaAux
+    nomeAux = []
+    senhaAux = []
+    console.log(nomeArray)
+    console.log(senhaArray)
+}
+
 function SelecionarOpcao() {
     continuar = true
     while (continuar == true) {
@@ -41,9 +77,7 @@ function SelecionarOpcao() {
         }
         if (opcao == 1) {
             alert("Opção de cadastro selecionado:")
-            nomeArray[index] = SolicitarNome()
-            senhaArray[index] = SolicitarSenha()
-            index++
+            FazerCadastro(SolicitarNome(), SolicitarSenha())
         }
         if (opcao == 2) {
             alert("Opção de login selecionado:")
@@ -51,6 +85,7 @@ function SelecionarOpcao() {
         }
         if (opcao == 3) {
             alert("Opção de excluir cadastro selecionado:")
+            ExcluirCadastro(SolicitarNome())
         }
         if (opcao == 4) {
             alert("Programa encerrado.")
@@ -62,6 +97,8 @@ function SelecionarOpcao() {
 
 nomeArray = []
 senhaArray = []
+nomeAux = []
+senhaAux = []
 index = parseInt(0)
 
 SelecionarOpcao()
