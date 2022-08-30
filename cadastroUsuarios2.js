@@ -1,3 +1,14 @@
+nomeArray = []
+senhaArray = []
+nomeAux = []
+senhaAux = []
+index = parseInt(0)
+
+SelecionarOpcao()
+
+console.log(nomeArray)
+console.log(senhaArray)
+
 function SolicitarNome() {
     var nome = prompt("Insira o seu nome")
     return nome
@@ -94,15 +105,3 @@ function SelecionarOpcao() {
         }
     }
 }
-
-nomeArray = []
-senhaArray = []
-nomeAux = []
-senhaAux = []
-index = parseInt(0)
-
-SelecionarOpcao()
-
-console.log(nomeArray)
-console.log(senhaArray)
-
